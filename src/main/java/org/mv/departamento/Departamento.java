@@ -15,6 +15,7 @@ public class Departamento {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    //agregar el plugin para hacer el mapeo de los datos
     @Column(name = "codigo", nullable = false, length = 2)
     private String codigo;
 

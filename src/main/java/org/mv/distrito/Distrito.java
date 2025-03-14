@@ -1,23 +1,23 @@
-package org.mv.municipio;
+package org.mv.distrito;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.mv.departamento.Departamento;
+import org.mv.municipio.Municipio;
 
 @Entity
-@Table(name = "municipio")
-public class Municipio {
+@Table(name = "distrito")
+public class Distrito {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "municipio_id_gen")
-    @SequenceGenerator(name = "municipio_id_gen", sequenceName = "municipio_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "distrito_id_gen")
+    @SequenceGenerator(name = "distrito_id_gen", sequenceName = "distrito_id_seq", allocationSize = 1)
     @Column(name = "id", nullable = false)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "id_departam", nullable = false)
-    private Departamento id_departam;
+    @JoinColumn(name = "id_municipio", nullable = false)
+    private Municipio municipio;
 
     @Column(name = "codigo", nullable = false, length = 3)
     private String codigo;
@@ -33,12 +33,12 @@ public class Municipio {
         this.id = id;
     }
 
-    public Departamento getDepartamento() {
-        return id_departam;
+    public Municipio getMunicipio() {
+        return municipio;
     }
 
-    public void setDepartamento(Departamento id_departam) {
-        this.id_departam = id_departam;
+    public void setMunicipio(Municipio municipio) {
+        this.municipio = municipio;
     }
 
     public String getCodigo() {
